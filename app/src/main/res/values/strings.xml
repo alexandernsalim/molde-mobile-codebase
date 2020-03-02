@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Molde</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="terms">By clicking on \"Register\" you agree to our Terms of Use and Privacy Policy.</string>
+    <string name="required_alert">Please fill all field</string>
+</resources>
