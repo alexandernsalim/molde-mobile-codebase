@@ -5,8 +5,32 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="login_failed">Login Failed</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="terms">By clicking on \"Register\" you agree to our Terms of Use and Privacy Policy.</string>
     <string name="required_alert">Please fill all field</string>
+    <string name="home">Home</string>
+    <string name="account">Account</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="product_image">Product Image</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">Rp. 1000000</string>
+    <string name="buy">Beli</string>
+    <string name="product_description">Product Description</string>
+    <string name="add_to_cart">Tambahkan Ke Keranjang</string>
+    <string name="price_label">Harga:</string>
+    <string name="qty">Jumlah:</string>
+    <string name="cart">Cart</string>
+    <string name="checkout">Checkout</string>
+    <string name="total_item">Total (0):</string>
+    <string name="total_item_price">Rp. 0</string>
+    <string name="payment_welcome_text">Selamat, pesanan anda berhasil dibuat!\nSilahkan melakukan pembayaran ke salah satu rekening dibawah ini</string>
+
+    <string-array name="courier">
+        <item>JNE</item>
+        <item>TIKI</item>
+        <item>POS</item>
+    </string-array>
+
 </resources>

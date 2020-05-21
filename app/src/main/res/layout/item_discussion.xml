@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_discussion_owner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="8pt"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pemilik diskusi" />
+
+        <TextView
+            android:id="@+id/tv_discussion_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:maxHeight="125dp"
+            android:textSize="7pt"
+            app:layout_constraintTop_toBottomOf="@id/tv_discussion_owner"
+            tools:text="Detail pertanyaan" />
+
+        <View
+            android:id="@+id/dv_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/tv_discussion_question" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_last_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/gl_1"
+            app:layout_constraintTop_toBottomOf="@id/dv_1">
+
+            <TextView
+                android:id="@+id/tv_last_reply_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Balasan terakhir"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/dv_2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                app:layout_constraintTop_toBottomOf="@id/tv_last_reply_label" />
+
+            <TextView
+                android:id="@+id/tv_discussion_last_reply_owner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxLines="1"
+                android:textSize="8pt"
+                app:layout_constraintTop_toBottomOf="@id/dv_2"
+                tools:text="Pemilik diskusi" />
+
+            <TextView
+                android:id="@+id/tv_discussion_last_reply_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxHeight="125dp"
+                android:textSize="7pt"
+                app:layout_constraintTop_toBottomOf="@id/tv_discussion_last_reply_owner"
+                tools:text="Detail pertanyaan" />
+
+            <View
+                android:id="@+id/dv_3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                app:layout_constraintTop_toBottomOf="@id/tv_discussion_last_reply_detail" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_join_discussion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Balas Diskusi"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_last_reply" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
