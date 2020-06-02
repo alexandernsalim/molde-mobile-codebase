@@ -8,11 +8,11 @@ import com.molde.molde.R
 import com.molde.molde.model.entity.Discussion
 import com.molde.molde.util.visible
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_discussion.view.*
+import kotlinx.android.synthetic.main.item_product_discussion.view.*
 
-class DiscussionAdapter(
+class ProductDiscussionAdapter(
     private val communicator: IDiscussionCommunicator
-) : RecyclerView.Adapter<DiscussionAdapter.DiscussionViewHolder>() {
+) : RecyclerView.Adapter<ProductDiscussionAdapter.DiscussionViewHolder>() {
     private val discussions: MutableList<Discussion> = mutableListOf()
 
     fun setData(discussions: List<Discussion>) {
@@ -22,7 +22,7 @@ class DiscussionAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DiscussionViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_discussion, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_product_discussion, parent, false)
     )
 
     override fun getItemCount() = discussions.size
@@ -51,11 +51,9 @@ class DiscussionAdapter(
                 }
             }
         }
-
     }
 
     interface IDiscussionCommunicator {
         fun replyDiscussion(discussionId: Int)
     }
-
 }

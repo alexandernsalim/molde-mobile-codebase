@@ -17,6 +17,7 @@ object RetrofitClient {
     private const val BANK_ACCOUNT_SERVICE = MOLDE_PATH + "bankaccount/"
     private const val ORDER_SERVICE = MOLDE_PATH + "order/"
     private const val DISCUSSION_SERVICE = MOLDE_PATH + "discussions/"
+    private const val REVIEW_SERVICE = MOLDE_PATH + "reviews/"
     private const val RAJAONGKIR_PATH = "https://api.rajaongkir.com/basic/"
 
     private val client = OkHttpClient.Builder()
@@ -47,6 +48,12 @@ object RetrofitClient {
         val retrofit = clientBuilder(DISCUSSION_SERVICE, client)
 
         return retrofit.create(DiscussionService::class.java)
+    }
+
+    fun reviewClient(): ReviewService {
+        val retrofit = clientBuilder(REVIEW_SERVICE, client)
+
+        return retrofit.create(ReviewService::class.java)
     }
 
     fun cartClient(): CartService {

@@ -9,7 +9,7 @@ import com.molde.molde.BaseActivity
 import com.molde.molde.R
 import com.molde.molde.databinding.ActivityOrdersBinding
 import com.molde.molde.model.response.OrderResponse
-import com.molde.molde.presentation.order_detail.OrderDetailActivity
+import com.molde.molde.presentation.order_detail.IOrderDetailActivity
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -18,9 +18,7 @@ class OrdersActivity : BaseActivity(),
     OrderAdapter.IOrderCommunicator {
     private lateinit var mBinding: ActivityOrdersBinding
     private val vModel = OrdersViewModel()
-    private val orders: MutableList<OrderResponse> = mutableListOf()
-    private val orderAdapter =
-        OrderAdapter(orders, this)
+    private val adapter = OrderAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +29,11 @@ class OrdersActivity : BaseActivity(),
         }
 
         mBinding.rvOrders.layoutManager = LinearLayoutManager(this)
-        mBinding.rvOrders.adapter = orderAdapter
+        mBinding.rvOrders.adapter = adapter
 
         vModel.ordersLiveData.observe(this, Observer {
             if (it.isNotEmpty()) {
-                orders.clear()
-                orders.addAll(it)
-                orderAdapter.notifyDataSetChanged()
+                adapter.setData(it)
             }
         })
     }
@@ -56,8 +52,8 @@ class OrdersActivity : BaseActivity(),
     }
 
     override fun getOrderDetail(order: OrderResponse) {
-        startActivity<OrderDetailActivity>(
-            "ORDER_DETAIL" to order
+        startActivity<IOrderDetailActivity>(
+            "ORDER_ID" to order.id
         )
     }
 

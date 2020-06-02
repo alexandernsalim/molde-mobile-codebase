@@ -11,6 +11,11 @@ import okhttp3.MultipartBody
 class DiscussionRepository {
     private val sharedPreferencesManager = SharedPreferencesManager()
     private val discussionService = RetrofitClient.discussionClient()
+    private val shopUserService = RetrofitClient.shopUserClient()
+
+    suspend fun getDiscussions(): MoldeResponse<List<Discussion>> {
+        return shopUserService.getDiscussions(sharedPreferencesManager.getToken())
+    }
 
     suspend fun getDiscussionDetail(discussionId: Int): MoldeResponse<DiscussionDetailResponse> {
         return discussionService.getDiscussion(sharedPreferencesManager.getToken(), discussionId)

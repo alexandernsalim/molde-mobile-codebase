@@ -2,6 +2,7 @@ package com.molde.molde.presentation.product_detail
 
 import com.molde.molde.model.entity.Discussion
 import com.molde.molde.model.entity.Product
+import com.molde.molde.model.entity.Review
 import com.molde.molde.model.response.CartItemResponse
 import com.molde.molde.model.response.MoldeResponse
 import com.molde.molde.network.RetrofitClient
@@ -23,6 +24,10 @@ class ProductDetailRepository {
 
     suspend fun getDiscussions(productId: Int): MoldeResponse<List<Discussion>> {
         return productService.getDiscussions(sharedPreferencesManager.getToken(), productId)
+    }
+
+    suspend fun getReviews(productId: Int): MoldeResponse<List<Review>> {
+        return productService.getReviews(sharedPreferencesManager.getToken(), productId)
     }
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,9 +19,103 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white" />
+                android:background="@color/white"
+                app:navigationIcon="@drawable/ic_arrow_back_black_24dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/tv_shipment_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Detail Pengiriman"
+            android:textSize="8pt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_layout" />
+
+        <TextView
+            android:id="@+id/tv_shipment_sender_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Dikirim oleh"
+            app:layout_constraintStart_toStartOf="@+id/tv_shipment_details"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shipment_details" />
+
+        <TextView
+            android:id="@+id/tv_shipment_sender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tv_shipment_sender_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shipment_sender_label"
+            tools:text="Toko" />
+
+        <TextView
+            android:id="@+id/tv_shipment_service_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Jasa Pengiriman"
+            app:layout_constraintStart_toStartOf="@+id/tv_shipment_sender"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shipment_sender" />
+
+        <TextView
+            android:id="@+id/tv_shipment_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tv_shipment_service_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shipment_service_label"
+            tools:text="Servis" />
+
+        <TextView
+            android:id="@+id/tv_shipment_origin_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="Dikirim dari"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_shipment_sender_label" />
+
+        <TextView
+            android:id="@+id/tv_shipment_origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_shipment_origin_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shipment_origin_label"
+            tools:text="Kabupaten/Kota" />
+
+        <TextView
+            android:id="@+id/tv_shipment_waybill_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="No. Resi"
+            app:layout_constraintEnd_toEndOf="@id/tv_shipment_origin"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shipment_origin" />
+
+        <TextView
+            android:id="@+id/tv_shipment_waybill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_shipment_waybill_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_shipment_waybill_label"
+            tools:text="ABCD1234567890" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_shipment_manifests"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_shipment_service" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

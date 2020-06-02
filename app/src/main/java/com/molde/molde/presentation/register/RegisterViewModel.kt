@@ -3,12 +3,12 @@ package com.molde.molde.presentation.register
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.molde.molde.model.constant.ResponseCode
-import com.molde.molde.model.response.RegisterResponse
+import com.molde.molde.model.response.ShopUserResponse
 
 class RegisterViewModel : ViewModel() {
     private val repository =
         RegisterRepository()
-    val registerLiveData = MutableLiveData<RegisterResponse>()
+    val registerLiveData = MutableLiveData<ShopUserResponse>()
 
     suspend fun register(
         shopId: Int,

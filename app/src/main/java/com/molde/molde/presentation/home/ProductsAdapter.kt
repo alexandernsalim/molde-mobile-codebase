@@ -3,27 +3,28 @@ package com.molde.molde.presentation.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.molde.molde.R
-import com.molde.molde.databinding.ItemProductBinding
 import com.molde.molde.model.constant.PathConstant
 import com.molde.molde.model.entity.Product
 import com.squareup.picasso.Picasso
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_product.*
 
 class ProductsAdapter(
-    private val products: List<Product>,
     private val communicator: IProductCommunicator
 ) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
-    private lateinit var mBinding: ItemProductBinding
+    private val products: MutableList<Product> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        mBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context), R.layout.item_product, parent, false
-        )
-
-        return ProductViewHolder(mBinding.root)
+    fun setData(products: List<Product>) {
+        this.products.clear()
+        this.products.addAll(products)
+        notifyDataSetChanged()
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ProductViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
+    )
 
     override fun getItemCount() = products.size
 
@@ -31,24 +32,25 @@ class ProductsAdapter(
         holder.bind(products[position])
     }
 
-    inner class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ProductViewHolder(override val containerView: View) :
+        RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bind(product: Product) {
-            mBinding.tvProductName.text = product.name
-            mBinding.tvProductPrice.text = "Rp. ${product.price}"
-            Picasso.get().load(PathConstant.HOST + product.image).fit()
-                .into(mBinding.ivProductImage)
-            mBinding.btBuy.setOnClickListener {
-                communicator.viewDetail(product.id)
+            with(itemView) {
+                tv_product_name.text = product.name
+                tv_product_price.text = "Rp. ${product.price}"
+                Picasso.get().load(PathConstant.HOST + product.image).fit()
+                    .into(iv_product_image)
+                bt_buy.setOnClickListener {
+                    communicator.viewDetail(product.id)
+                }
             }
         }
-
     }
 
     interface IProductCommunicator {
         fun viewDetail(productId: Int)
     }
-
 }
 
 

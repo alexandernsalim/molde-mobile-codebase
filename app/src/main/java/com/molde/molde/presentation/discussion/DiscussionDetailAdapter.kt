@@ -9,7 +9,7 @@ import com.molde.molde.model.entity.DiscussionReply
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_message.*
 
-class DiscussionDetailAdapter() :
+class DiscussionDetailAdapter :
     RecyclerView.Adapter<DiscussionDetailAdapter.DiscussionDetailViewHolder>() {
     private val discussionReplies: MutableList<DiscussionReply> = mutableListOf()
 
@@ -41,7 +41,5 @@ class DiscussionDetailAdapter() :
             tv_message_owner.text = reply.shopUserReplyUsername ?: reply.shopReplyUsername
             tv_message.text = reply.message
         }
-
     }
-
 }

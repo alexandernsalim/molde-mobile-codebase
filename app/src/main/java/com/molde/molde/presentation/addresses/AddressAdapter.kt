@@ -11,9 +11,15 @@ import kotlinx.android.synthetic.main.item_address.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class AddressAdapter(
-    private val addresses: List<Address>,
     private val communicator: IAddressCommunicator
 ) : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
+    private val addresses: MutableList<Address> = mutableListOf()
+
+    fun setData(addresses: List<Address>) {
+        this.addresses.clear()
+        this.addresses.addAll(addresses)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
         return AddressViewHolder(
@@ -61,5 +67,4 @@ class AddressAdapter(
         fun updateAddress(address: Address)
         fun removeAddress(addressId: Int)
     }
-
 }

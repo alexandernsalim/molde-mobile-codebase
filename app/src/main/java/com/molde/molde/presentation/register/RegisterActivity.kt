@@ -33,7 +33,7 @@ class RegisterActivity : BaseActivity() {
             val lastName = mBinding.etLastName.text.toString()
             val phoneNo = mBinding.etPhoneNo.text.toString()
 
-            if (email.isNullOrEmpty() || password.isNullOrEmpty() || confirmPassword.isNullOrEmpty()) {
+            if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 toast(R.string.required_alert)
             } else {
                 vModel.viewModelScope.launch {

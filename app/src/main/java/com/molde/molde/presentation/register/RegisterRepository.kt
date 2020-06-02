@@ -1,7 +1,7 @@
 package com.molde.molde.presentation.register
 
 import com.molde.molde.model.response.MoldeResponse
-import com.molde.molde.model.response.RegisterResponse
+import com.molde.molde.model.response.ShopUserResponse
 import com.molde.molde.network.RetrofitClient
 import okhttp3.MultipartBody
 
@@ -15,7 +15,7 @@ class RegisterRepository {
         firstName: String,
         lastName: String,
         phoneNo: String
-    ): MoldeResponse<RegisterResponse> {
+    ): MoldeResponse<ShopUserResponse> {
         val request = MultipartBody.Builder()
             .addFormDataPart("email", email)
             .addFormDataPart("password", password)

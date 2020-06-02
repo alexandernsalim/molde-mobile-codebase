@@ -23,7 +23,7 @@ class CreateDiscussionActivity : BaseActivity() {
         mBinding.toolbar.title = "Buat Diskusi Baru"
         mBinding.toolbar.setNavigationOnClickListener { finish() }
 
-        discussionId = intent.getIntExtra("PRODUCT_ID",0)
+        discussionId = intent.getIntExtra("PRODUCT_ID", 0)
 
         mBinding.btCreateDiscussion.setOnClickListener {
             var isError = false

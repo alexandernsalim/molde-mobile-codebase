@@ -131,15 +131,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-<!--        <Switch-->
-<!--            android:id="@+id/sw_primary_address"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:text="Jadikan Alamat Utama "-->
-<!--            android:textSize="8pt"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/et_postal_code" />-->
+        <!--        <Switch-->
+        <!--            android:id="@+id/sw_primary_address"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:text="Jadikan Alamat Utama "-->
+        <!--            android:textSize="8pt"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/et_postal_code" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

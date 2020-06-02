@@ -4,19 +4,31 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.molde.molde.model.constant.ResponseCode
 import com.molde.molde.model.entity.Order
-import com.molde.molde.model.rajaongkir.RajaOngkirWaybill
+import com.molde.molde.model.response.OrderResponse
 
-class OrderDetailViewModel() : ViewModel() {
+class OrderDetailViewModel : ViewModel() {
     private val repository =
         OrderDetailRepository()
-    val orderLiveData: MutableLiveData<Order> = MutableLiveData()
-    val waybillLiveData: MutableLiveData<RajaOngkirWaybill> = MutableLiveData()
+    val orderDetailLiveData: MutableLiveData<OrderResponse> = MutableLiveData()
+    val completeOrderLiveData: MutableLiveData<Order> = MutableLiveData()
+    val cancelOrderLiveData: MutableLiveData<Order> = MutableLiveData()
 
-    suspend fun trackWaybill(waybill: String, courier: String): Boolean {
-        val response = repository.trackWaybill(waybill, courier)
+    suspend fun getOrderDetail(orderId: Int): Boolean {
+        val response = repository.getOrder(orderId)
 
-        return if (response.data != null) {
-            waybillLiveData.postValue(response.data)
+        return if (response.code == ResponseCode.SUCCESS) {
+            orderDetailLiveData.postValue(response.data)
+            true
+        } else {
+            false
+        }
+    }
+
+    suspend fun completeOrder(orderId: Int): Boolean {
+        val response = repository.completeOrder(orderId)
+
+        return if (response.code == ResponseCode.SUCCESS) {
+            completeOrderLiveData.postValue(response.data)
             true
         } else {
             false
@@ -27,7 +39,7 @@ class OrderDetailViewModel() : ViewModel() {
         val response = repository.cancelOrder(orderId)
 
         return if (response.code == ResponseCode.SUCCESS) {
-            orderLiveData.postValue(response.data)
+            cancelOrderLiveData.postValue(response.data)
             true
         } else {
             false

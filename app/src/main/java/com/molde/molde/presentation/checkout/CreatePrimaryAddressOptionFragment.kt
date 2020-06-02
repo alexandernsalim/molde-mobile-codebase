@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.molde.molde.R
-import com.molde.molde.presentation.add_address.AddAddressActivity
 import com.molde.molde.databinding.FragmentCreatePrimaryAddressOptionBinding
+import com.molde.molde.presentation.add_address.AddAddressActivity
 import org.jetbrains.anko.support.v4.startActivity
 
 class CreatePrimaryAddressOptionFragment : DialogFragment() {
@@ -19,7 +19,7 @@ class CreatePrimaryAddressOptionFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding =  DataBindingUtil.inflate(
+        mBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_create_primary_address_option,
             container,

@@ -1,6 +1,6 @@
 package com.molde.molde.model.entity
 
-data class DiscussionReply (
+data class DiscussionReply(
     val id: Int,
     val message: String,
     val shopReplyUsername: String?,

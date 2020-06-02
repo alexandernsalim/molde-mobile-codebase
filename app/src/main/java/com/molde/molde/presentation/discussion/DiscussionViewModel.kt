@@ -9,10 +9,21 @@ import com.molde.molde.model.response.DiscussionDetailResponse
 
 class DiscussionViewModel : ViewModel() {
     private val repository = DiscussionRepository()
-
     val createDiscussionLiveData: MutableLiveData<Discussion> = MutableLiveData()
     val replyDiscussionLiveData: MutableLiveData<DiscussionReply> = MutableLiveData()
     val discussionDetailLiveData: MutableLiveData<DiscussionDetailResponse> = MutableLiveData()
+    val userDiscussionsLiveData: MutableLiveData<List<Discussion>> = MutableLiveData()
+
+    suspend fun getDiscussions(): Boolean {
+        val response = repository.getDiscussions()
+
+        return if (response.code == ResponseCode.SUCCESS) {
+            userDiscussionsLiveData.postValue(response.data)
+            true
+        } else {
+            false
+        }
+    }
 
     suspend fun getDiscussionDetail(discussionId: Int): Boolean {
         val response = repository.getDiscussionDetail(discussionId)

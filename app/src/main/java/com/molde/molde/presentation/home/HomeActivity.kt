@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.molde.molde.BaseActivity
 import com.molde.molde.R
+import com.molde.molde.databinding.ActivityHomeBinding
 import com.molde.molde.presentation.account.AccountFragment
 import com.molde.molde.presentation.cart.CartFragment
-import com.molde.molde.databinding.ActivityHomeBinding
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseActivity() {
@@ -28,17 +28,20 @@ class HomeActivity : BaseActivity() {
                 R.id.action_home -> {
                     initFragment(
                         HomeFragment(),
-                        HOME, R.id.fl_home_content)
+                        HOME, R.id.fl_home_content
+                    )
                 }
                 R.id.action_cart -> {
                     initFragment(
                         CartFragment(),
-                        CART, R.id.fl_home_content)
+                        CART, R.id.fl_home_content
+                    )
                 }
                 R.id.action_account -> {
                     initFragment(
                         AccountFragment(),
-                        ACCOUNT, R.id.fl_home_content)
+                        ACCOUNT, R.id.fl_home_content
+                    )
                 }
 
             }
@@ -48,7 +51,8 @@ class HomeActivity : BaseActivity() {
         bn_main_navigation.selectedItemId = R.id.action_home
         initFragment(
             HomeFragment(),
-            HOME, R.id.fl_home_content)
+            HOME, R.id.fl_home_content
+        )
     }
 
 }

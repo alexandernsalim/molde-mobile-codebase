@@ -12,9 +12,15 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_order.view.*
 
 class OrderAdapter(
-    private val orders: List<OrderResponse>,
     private val communicator: IOrderCommunicator
 ) : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
+    private val orders: MutableList<OrderResponse> = mutableListOf()
+
+    fun setData(orders: List<OrderResponse>) {
+        this.orders.clear()
+        this.orders.addAll(orders)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = OrderViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)

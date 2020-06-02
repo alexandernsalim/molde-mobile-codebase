@@ -182,7 +182,7 @@
         <Button
             android:id="@+id/bt_add_to_cart"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="#FFFFC107"
             android:text="@string/add_to_cart"

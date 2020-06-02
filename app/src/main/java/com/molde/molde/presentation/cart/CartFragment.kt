@@ -11,8 +11,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.molde.molde.R
 import com.molde.molde.databinding.FragmentCartBinding
-import com.molde.molde.model.response.CartItemResponse
 import com.molde.molde.presentation.checkout.CheckoutDetailActivity
+import com.molde.molde.util.invisible
+import com.molde.molde.util.visible
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -21,8 +22,7 @@ class CartFragment : Fragment(),
     CartItemsAdapter.ICartItemCommunicator {
     private lateinit var mBinding: FragmentCartBinding
     private val vModel = CartViewModel()
-    private val cartItems: MutableList<CartItemResponse> = mutableListOf()
-    private val adapter = CartItemsAdapter(cartItems, this)
+    private val adapter = CartItemsAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,10 +45,9 @@ class CartFragment : Fragment(),
 
         vModel.cartLiveData.observe(viewLifecycleOwner, Observer {
             if (it.cartItems.isNotEmpty()) {
-                cartItems.clear()
-                cartItems.addAll(it.cartItems)
-                adapter.notifyDataSetChanged()
-                mBinding.btCheckout.visibility = View.VISIBLE
+                adapter.setData(it.cartItems)
+                mBinding.tvCartCond.invisible()
+                mBinding.btCheckout.visible()
                 mBinding.tvTotalItem.text = "Total (${it.totalItem}):"
                 mBinding.tvTotalPrice.text = "Rp. ${it.totalPrice}"
                 mBinding.btCheckout.setOnClickListener { _ ->
@@ -57,6 +56,12 @@ class CartFragment : Fragment(),
                         "TOTAL_WEIGHT" to it.totalWeight
                     )
                 }
+            } else {
+                adapter.clearData()
+                mBinding.tvCartCond.visible()
+                mBinding.btCheckout.invisible()
+                mBinding.tvTotalItem.text = "Total (${it.totalItem}):"
+                mBinding.tvTotalPrice.text = "Rp. ${it.totalPrice}"
             }
         })
 
@@ -68,7 +73,7 @@ class CartFragment : Fragment(),
         })
 
         vModel.removeItemLiveData.observe(viewLifecycleOwner, Observer {
-            if (it.isNotEmpty()) {
+            if (it == "Item removed successfully") {
                 loadCart()
                 toast("Berhasil menghapus produk")
             }

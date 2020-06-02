@@ -7,9 +7,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.molde.molde.BaseActivity
 import com.molde.molde.R
-import com.molde.molde.presentation.add_address.AddAddressActivity
 import com.molde.molde.databinding.ActivityAddressesBinding
 import com.molde.molde.model.entity.Address
+import com.molde.molde.presentation.add_address.AddAddressActivity
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -17,9 +17,7 @@ import org.jetbrains.anko.toast
 class AddressesActivity : BaseActivity(),
     AddressAdapter.IAddressCommunicator {
     private lateinit var mBinding: ActivityAddressesBinding
-    private val vModel =
-        AddressesViewModel()
-    private val addresses: MutableList<Address> = mutableListOf()
+    private val vModel = AddressesViewModel()
     private lateinit var adapter: AddressAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,10 +28,7 @@ class AddressesActivity : BaseActivity(),
             finish()
         }
 
-        adapter = AddressAdapter(
-            addresses,
-            this
-        )
+        adapter = AddressAdapter(this)
 
         mBinding.rvAddresses.layoutManager = LinearLayoutManager(this)
         mBinding.rvAddresses.adapter = adapter
@@ -44,9 +39,7 @@ class AddressesActivity : BaseActivity(),
 
         vModel.addressesLiveData.observe(this, Observer {
             if (it.isNotEmpty()) {
-                addresses.clear()
-                addresses.addAll(it)
-                adapter.notifyDataSetChanged()
+                adapter.setData(it)
             }
         })
 

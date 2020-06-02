@@ -20,10 +20,10 @@ import kotlinx.coroutines.launch
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
-class ProductDiscussionFragment : Fragment(), DiscussionAdapter.IDiscussionCommunicator {
+class ProductDiscussionFragment : Fragment(), ProductDiscussionAdapter.IDiscussionCommunicator {
     private lateinit var mBinding: FragmentProductDiscussionBinding
     private val vModel = ProductDetailViewModel()
-    private val adapter = DiscussionAdapter(this)
+    private val adapter = ProductDiscussionAdapter(this)
 
     private var productId: Int? = null
 

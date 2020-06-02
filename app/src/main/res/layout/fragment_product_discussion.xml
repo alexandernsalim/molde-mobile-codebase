@@ -4,13 +4,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:minHeight="150dp">
 
         <Button
             android:id="@+id/bt_add_discussion"
             style="@style/RegularButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:text="Buat Diskusi Baru"
             android:textSize="9pt"
             app:layout_constraintTop_toTopOf="parent" />
@@ -21,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Belum ada diskusi"
             android:textSize="8pt"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bt_add_discussion" />

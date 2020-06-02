@@ -10,5 +10,6 @@ data class OrderItemResponse(
     val product: Product,
     val qty: Int,
     val totalWeight: Float,
-    val totalPrice: Long
+    val totalPrice: Long,
+    val reviewed: Int
 ) : Parcelable

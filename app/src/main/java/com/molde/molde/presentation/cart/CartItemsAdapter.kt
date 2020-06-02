@@ -15,9 +15,20 @@ import kotlinx.android.synthetic.main.item_product.view.tv_product_name
 import kotlinx.android.synthetic.main.item_product.view.tv_product_price
 
 class CartItemsAdapter(
-    private val cartItems: List<CartItemResponse>,
     private val communicator: ICartItemCommunicator
 ) : RecyclerView.Adapter<CartItemsAdapter.CartItemViewHolder>() {
+    private val cartItems: MutableList<CartItemResponse> = mutableListOf()
+
+    fun setData(cartItems: List<CartItemResponse>) {
+        this.cartItems.clear()
+        this.cartItems.addAll(cartItems)
+        notifyDataSetChanged()
+    }
+
+    fun clearData() {
+        cartItems.clear()
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemViewHolder {
         return CartItemViewHolder(
@@ -65,5 +76,4 @@ class CartItemsAdapter(
         fun updateItem(cartItemId: Int, qty: Int)
         fun removeItem(cartItemId: Int)
     }
-
 }

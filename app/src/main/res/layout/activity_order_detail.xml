@@ -359,6 +359,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
                     android:text="Bayar Sekarang"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@id/tv_total_payment_price_label" />
 
                 <Button
@@ -368,6 +369,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
                     android:text="Pesanan Diterima"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@id/bt_pay_now" />
 
                 <Button
@@ -377,6 +379,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
                     android:text="Batalkan Pesanan"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@id/bt_order_confirmed" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

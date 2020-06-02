@@ -4,6 +4,6 @@ data class Discussion(
     val id: Int,
     val detail: String,
     val questionMaker: String,
-    val lastReply: DiscussionReply?
-
+    val lastReply: DiscussionReply?,
+    val product: Product
 )

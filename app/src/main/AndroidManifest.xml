@@ -16,6 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".presentation.review.ReviewListActivity"></activity>
+        <activity android:name=".presentation.discussion.DiscussionListActivity" />
+        <activity android:name=".presentation.profile.ChangePasswordActivity" />
+        <activity android:name=".presentation.profile.EditProfileActivity" />
+        <activity android:name=".presentation.review.ReviewActivity" />
         <activity android:name=".presentation.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,10 +37,11 @@
         <activity android:name=".presentation.change_address.ChangeAddressActivity" />
         <activity android:name=".presentation.payment_detail.PaymentDetailActivity" />
         <activity android:name=".presentation.orders.OrdersActivity" />
-        <activity android:name=".presentation.order_detail.OrderDetailActivity" />
+        <activity android:name=".presentation.order_detail.IOrderDetailActivity" />
         <activity android:name=".presentation.discussion.DiscussionDetailActivity" />
         <activity android:name=".presentation.discussion.CreateDiscussionActivity" />
-
+        <activity android:name=".presentation.order_detail.TrackWaybillActivity" />
+        <activity android:name=".presentation.profile.ProfileActivity" />
     </application>
 
 </manifest>

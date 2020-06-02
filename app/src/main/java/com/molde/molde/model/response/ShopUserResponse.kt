@@ -1,8 +1,11 @@
 package com.molde.molde.model.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-data class RegisterResponse(
+@Parcelize
+data class ShopUserResponse(
     @SerializedName("email")
     val email: String,
     @SerializedName("firstName")
@@ -11,4 +14,4 @@ data class RegisterResponse(
     val lastName: String,
     @SerializedName("phoneNo")
     val phoneNo: String
-)
+) : Parcelable

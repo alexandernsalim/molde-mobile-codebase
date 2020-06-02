@@ -26,6 +26,12 @@ interface OrderService {
         @Query("shopId") shopId: Int
     ): MoldeResponse<Order>
 
+    @POST("{orderId}/complete")
+    suspend fun completeOrder(
+        @Header("Authorization") auth: String,
+        @Path("orderId") orderId: Int
+    ): MoldeResponse<Order>
+
     @POST("{orderId}/cancel")
     suspend fun cancelOrder(
         @Header("Authorization") auth: String,

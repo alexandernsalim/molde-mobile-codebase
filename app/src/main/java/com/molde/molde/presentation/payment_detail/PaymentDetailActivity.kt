@@ -16,8 +16,8 @@ import androidx.lifecycle.viewModelScope
 import com.molde.molde.BaseActivity
 import com.molde.molde.R
 import com.molde.molde.databinding.ActivityPaymentDetailBinding
-import com.molde.molde.presentation.home.HomeActivity
 import com.molde.molde.model.response.BankAccountResponse
+import com.molde.molde.presentation.home.HomeActivity
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -152,7 +152,8 @@ class PaymentDetailActivity : BaseActivity(), EasyPermissions.PermissionCallback
         val intent = Intent(Intent.ACTION_PICK)
 
         intent.type = "image/*"
-        startActivityForResult(intent,
+        startActivityForResult(
+            intent,
             IMAGE_PICK_CODE
         )
     }

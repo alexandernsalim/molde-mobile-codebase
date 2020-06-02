@@ -11,7 +11,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.molde.molde.R
 import com.molde.molde.databinding.FragmentHomeBinding
-import com.molde.molde.model.entity.Product
 import com.molde.molde.presentation.product_detail.ProductDetailActivity
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.support.v4.startActivity
@@ -21,9 +20,7 @@ class HomeFragment : Fragment(),
     ProductsAdapter.IProductCommunicator {
     private lateinit var mBinding: FragmentHomeBinding
     private val vModel = HomeViewModel()
-    private val products: MutableList<Product> = mutableListOf()
-    private var adapter =
-        ProductsAdapter(products, this)
+    private var adapter = ProductsAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,9 +44,7 @@ class HomeFragment : Fragment(),
 
         vModel.productsLiveData.observe(viewLifecycleOwner, Observer {
             if (it.isNotEmpty()) {
-                products.clear()
-                products.addAll(it)
-                adapter.notifyDataSetChanged()
+                adapter.setData(it)
             }
         })
     }

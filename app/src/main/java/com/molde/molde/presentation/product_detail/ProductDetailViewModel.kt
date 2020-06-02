@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.molde.molde.model.constant.ResponseCode
 import com.molde.molde.model.entity.Discussion
 import com.molde.molde.model.entity.Product
+import com.molde.molde.model.entity.Review
 import com.molde.molde.model.response.CartItemResponse
 
 class ProductDetailViewModel : ViewModel() {
@@ -13,6 +14,7 @@ class ProductDetailViewModel : ViewModel() {
     val productLiveData = MutableLiveData<Product>()
     val cartItemLiveData = MutableLiveData<CartItemResponse>()
     val discussionsLiveData = MutableLiveData<List<Discussion>>()
+    val reviewsLiveData = MutableLiveData<List<Review>>()
     var isOutOfStock = false
 
     suspend fun getProduct(productId: Int): Boolean {
@@ -54,4 +56,16 @@ class ProductDetailViewModel : ViewModel() {
             false
         }
     }
+
+    suspend fun getReviews(productId: Int): Boolean {
+        val response = repository.getReviews(productId)
+
+        return if (response.code == ResponseCode.SUCCESS) {
+            reviewsLiveData.postValue(response.data)
+            true
+        } else {
+            false
+        }
+    }
+
 }
