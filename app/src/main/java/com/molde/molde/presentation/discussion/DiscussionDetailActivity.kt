@@ -1,35 +1,31 @@
 package com.molde.molde.presentation.discussion
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
+import com.google.firebase.messaging.FirebaseMessaging
 import com.molde.molde.BaseActivity
 import com.molde.molde.R
 import com.molde.molde.databinding.ActivityDiscussionDetailBinding
-import com.molde.molde.util.SharedPreferencesManager
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import com.molde.molde.model.entity.DiscussionReply
+import com.molde.molde.service.FCMService
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.toast
-import ua.naiksoftware.stomp.LifecycleEvent
-import ua.naiksoftware.stomp.Stomp
-import ua.naiksoftware.stomp.StompHeader
-import ua.naiksoftware.stomp.client.StompClient
-import ua.naiksoftware.stomp.client.StompMessage
 
 class DiscussionDetailActivity : BaseActivity() {
     private lateinit var mBinding: ActivityDiscussionDetailBinding
-    private lateinit var stompClient: StompClient
+    private lateinit var receiver: BroadcastReceiver
     private val vModel = DiscussionViewModel()
-    private val sharedPreferencesManager = SharedPreferencesManager()
     private val adapter = DiscussionDetailAdapter()
-    private val compositeDisposable = CompositeDisposable()
 
     private var discussionId: Int? = null
 
@@ -44,7 +40,10 @@ class DiscussionDetailActivity : BaseActivity() {
         mBinding.toolbar.title = "Diskusi"
         mBinding.toolbar.setNavigationOnClickListener { finish() }
 
-        connect()
+        subscribe()
+
+        LocalBroadcastManager.getInstance(this)
+            .registerReceiver(receiver, IntentFilter(FCMService.DISCUSSION))
 
         discussionId = intent.getIntExtra(EXTRA_DISCUSSION, 0)
 
@@ -62,8 +61,7 @@ class DiscussionDetailActivity : BaseActivity() {
                 isError = true
             }
 
-//            if (!isError) discussionId?.let { replyDiscussion(it, reply) }
-            if (!isError) discussionId?.let { replyDiscussionWs(it, reply) }
+            if (!isError) discussionId?.let { replyDiscussion(it, reply) }
         }
 
         vModel.discussionDetailLiveData.observe(this, Observer {
@@ -75,7 +73,6 @@ class DiscussionDetailActivity : BaseActivity() {
 
         vModel.replyDiscussionLiveData.observe(this, Observer {
             if (it != null) {
-                adapter.setItem(it)
                 mBinding.etDiscussionReply.setText("")
                 mBinding.etDiscussionReply.clearFocus()
             }
@@ -91,42 +88,52 @@ class DiscussionDetailActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        disconnect()
+        unsubscribe()
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver)
     }
 
-    private fun connect() {
-        stompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, "ws://10.0.2.2:9000/molde/ws/websocket")
-        stompClient.connect()
+    private fun subscribe() {
+        FirebaseMessaging.getInstance().subscribeToTopic("/topics/discussionReply")
+            .addOnCompleteListener { task ->
+                var msg = getString(R.string.discussion_topic_subscribed)
+                if (!task.isSuccessful) {
+                    msg = getString(R.string.discussion_topic_subscribed_err)
+                }
+                Log.i("FCM", msg)
+            }
 
-        compositeDisposable.add(stompClient.lifecycle()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                when (it.type) {
-                    LifecycleEvent.Type.OPENED -> {
-                        Log.i("WS", "Websocket connection opened")
-                    }
-                    LifecycleEvent.Type.ERROR -> {
-                        Log.e("WS", "Failed to connect websocket, error: ${it.exception}")
-                    }
-                    LifecycleEvent.Type.CLOSED -> {
-                        Log.i("WS", "Websocket connection closed")
+        receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                if (intent?.action == FCMService.DISCUSSION) {
+                    val discussionId = intent.getIntExtra("discussionId", 0)
+                    val shopUsername = intent.getStringExtra("shopUsername")
+                    val shopUserUsername = intent.getStringExtra("shopUserUsername")
+                    val message = intent.getStringExtra("message")
+
+                    if (this@DiscussionDetailActivity.discussionId == discussionId) {
+                        adapter.setItem(
+                            DiscussionReply(
+                                discussionId,
+                                message,
+                                shopUsername,
+                                shopUserUsername
+                            )
+                        )
                     }
                 }
             }
-        )
-
-        compositeDisposable.add(
-            stompClient.topic("/topic/discussion")
-                .subscribe {
-                    Log.i("WS", "New reply received: ${it.payload}")
-                }
-        )
+        }
     }
 
-    private fun disconnect() {
-        stompClient.disconnect()
-        compositeDisposable.clear()
+    private fun unsubscribe() {
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("/topics/discussionReply")
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.i("FCM", "Failed to unsubscribe discussion topic")
+                } else {
+                    Log.i("FCM", "Discussion topic unsubscribed")
+                }
+            }
     }
 
     private fun loadDetail(discussionId: Int) {
@@ -143,23 +150,6 @@ class DiscussionDetailActivity : BaseActivity() {
                 toast("Gagal memuat data")
             }
         }
-    }
-
-    private fun replyDiscussionWs(discussionId: Int, detail: String) {
-        val gson = Gson()
-        val headers: MutableList<StompHeader> = mutableListOf()
-        headers.add(StompHeader("Authorization", sharedPreferencesManager.getToken()))
-        val message = StompMessage("/topic/${discussionId}/reply", headers, gson.toJson(detail))
-        compositeDisposable.add(
-            stompClient.send(message)
-                .doFinally {
-                    Log.e("WS", "Sended")
-                }
-                .doOnSubscribe {
-                    Log.i("WS", "Subscribed")
-                }
-                .subscribe()
-        )
     }
 
 }

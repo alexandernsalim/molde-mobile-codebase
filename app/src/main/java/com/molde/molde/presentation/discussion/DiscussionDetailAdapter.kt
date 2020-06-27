@@ -38,7 +38,11 @@ class DiscussionDetailAdapter :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bind(reply: DiscussionReply) {
-            tv_message_owner.text = reply.shopUserReplyUsername ?: reply.shopReplyUsername
+            tv_message_owner.text = if (reply.shopUserReplyUsername == null || reply.shopUserReplyUsername == "") {
+                reply.shopReplyUsername
+            } else {
+                reply.shopUserReplyUsername
+            }
             tv_message.text = reply.message
         }
     }

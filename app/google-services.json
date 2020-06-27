@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "76982314600",
+    "firebase_url": "https://molde-c0a96.firebaseio.com",
+    "project_id": "molde-c0a96",
+    "storage_bucket": "molde-c0a96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76982314600:android:6595cd5b37ea2201697ddd",
+        "android_client_info": {
+          "package_name": "com.molde.molde"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76982314600-dbakd29gv7hvk1ng75elopnt0pg0q0l6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBphjsOAAuHDYy7IjGulCZljKJkzb3ZcxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76982314600-dbakd29gv7hvk1ng75elopnt0pg0q0l6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
