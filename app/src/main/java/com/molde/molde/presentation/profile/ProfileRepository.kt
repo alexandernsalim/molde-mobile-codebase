@@ -24,7 +24,11 @@ class ProfileRepository {
             .addFormDataPart("phoneNo", editProfileRequest.phoneNo)
             .build()
 
-        return shopUserService.editProfile(sharedPreferencesManager.getToken(), request)
+        return try {
+            shopUserService.editProfile(sharedPreferencesManager.getToken(), request)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun changePassword(changePasswordRequest: ChangePasswordRequest): MoldeResponse<String> {
@@ -33,7 +37,11 @@ class ProfileRepository {
             .addFormDataPart("newPassword", changePasswordRequest.newPassword)
             .build()
 
-        return shopUserService.changePassword(sharedPreferencesManager.getToken(), request)
+        return try {
+            shopUserService.changePassword(sharedPreferencesManager.getToken(), request)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }

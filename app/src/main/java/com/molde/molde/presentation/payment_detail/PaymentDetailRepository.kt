@@ -23,12 +23,16 @@ class PaymentDetailRepository {
         val requestFile = RequestBody.create(MediaType.parse("image/*"), file)
         val paymentImage = MultipartBody.Part.createFormData("paymentImage", file.name, requestFile)
 
-        return orderService.uploadPaymentImage(
-            sharedPreferencesManager.getToken(),
-            orderId,
-            paymentImage,
-            shopId
-        )
+        return try {
+            orderService.uploadPaymentImage(
+                sharedPreferencesManager.getToken(),
+                orderId,
+                paymentImage,
+                shopId
+            )
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }

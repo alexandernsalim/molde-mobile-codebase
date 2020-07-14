@@ -14,11 +14,19 @@ class DiscussionRepository {
     private val shopUserService = RetrofitClient.shopUserClient()
 
     suspend fun getDiscussions(): MoldeResponse<List<Discussion>> {
-        return shopUserService.getDiscussions(sharedPreferencesManager.getToken())
+        return try {
+            shopUserService.getDiscussions(sharedPreferencesManager.getToken())
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun getDiscussionDetail(discussionId: Int): MoldeResponse<DiscussionDetailResponse> {
-        return discussionService.getDiscussion(sharedPreferencesManager.getToken(), discussionId)
+        return try {
+            discussionService.getDiscussion(sharedPreferencesManager.getToken(), discussionId)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun createDiscussion(
@@ -29,11 +37,15 @@ class DiscussionRepository {
             .addFormDataPart("detail", detail)
             .build()
 
-        return discussionService.createDiscussion(
-            sharedPreferencesManager.getToken(),
-            productId,
-            body
-        )
+        return try {
+            discussionService.createDiscussion(
+                sharedPreferencesManager.getToken(),
+                productId,
+                body
+            )
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun replyDiscussion(discussionId: Int, detail: String): MoldeResponse<DiscussionReply> {
@@ -41,11 +53,15 @@ class DiscussionRepository {
             .addFormDataPart("detail", detail)
             .build()
 
-        return discussionService.replyDiscussion(
-            sharedPreferencesManager.getToken(),
-            discussionId,
-            body
-        )
+        return try {
+            discussionService.replyDiscussion(
+                sharedPreferencesManager.getToken(),
+                discussionId,
+                body
+            )
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }

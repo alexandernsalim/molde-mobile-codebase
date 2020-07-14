@@ -21,7 +21,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-        mBinding.toolbar.title = "Molde Client App"
+        mBinding.toolbar.title = resources.getString(R.string.app_name)
 
         bn_main_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {

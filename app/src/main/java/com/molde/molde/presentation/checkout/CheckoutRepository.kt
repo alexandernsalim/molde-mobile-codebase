@@ -26,13 +26,17 @@ class CheckoutRepository {
         weight: Int,
         courier: String
     ): RajaOngkirResponse<RajaOngkirCost> {
-        return rajaOngkirService.getShipmentCost(
-            BuildConfig.API_KEY,
-            origin,
-            destination,
-            weight,
-            courier
-        )
+        return try {
+            rajaOngkirService.getShipmentCost(
+                BuildConfig.API_KEY,
+                origin,
+                destination,
+                weight,
+                courier
+            )
+        } catch (e: Exception) {
+            RajaOngkirResponse(null)
+        }
     }
 
     suspend fun checkout(
@@ -62,7 +66,11 @@ class CheckoutRepository {
             .addFormDataPart("recipientPhone", recipientPhone)
             .build()
 
-        return cartService.checkout(sharedPreferencesManager.getToken(), requestBody)
+        return try {
+            cartService.checkout(sharedPreferencesManager.getToken(), requestBody)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }

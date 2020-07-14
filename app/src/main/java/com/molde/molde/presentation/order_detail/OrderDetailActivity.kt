@@ -14,6 +14,7 @@ import com.molde.molde.model.response.OrderItemResponse
 import com.molde.molde.presentation.payment_detail.PaymentDetailActivity
 import com.molde.molde.presentation.review.ReviewActivity
 import com.molde.molde.util.gone
+import com.molde.molde.util.invisible
 import com.molde.molde.util.visible
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
@@ -21,7 +22,7 @@ import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
 import java.util.*
 
-class IOrderDetailActivity : BaseActivity(), OrderItemAdapter.IOrderItemCommunicator {
+class OrderDetailActivity : BaseActivity(), OrderItemAdapter.IOrderItemCommunicator {
     private lateinit var mBinding: ActivityOrderDetailBinding
     private val vModel = OrderDetailViewModel()
 
@@ -61,6 +62,8 @@ class IOrderDetailActivity : BaseActivity(), OrderItemAdapter.IOrderItemCommunic
                     }
                     OrderStatusConstant.WAITING_FOR_PAYMENT_CONFIRMATION -> {
                         status = OrderStatusConstant.WAITING_FOR_PAYMENT_CONFIRMATION_RESP
+                        mBinding.btPayNow.gone()
+                        mBinding.btCancel.gone()
                     }
                     OrderStatusConstant.PAYMENT_ACCEPTED -> {
                         status = OrderStatusConstant.PAYMENT_ACCEPTED_RESP

@@ -9,7 +9,7 @@ import com.molde.molde.BaseActivity
 import com.molde.molde.R
 import com.molde.molde.databinding.ActivityOrdersBinding
 import com.molde.molde.model.response.OrderResponse
-import com.molde.molde.presentation.order_detail.IOrderDetailActivity
+import com.molde.molde.presentation.order_detail.OrderDetailActivity
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -52,7 +52,7 @@ class OrdersActivity : BaseActivity(),
     }
 
     override fun getOrderDetail(order: OrderResponse) {
-        startActivity<IOrderDetailActivity>(
+        startActivity<OrderDetailActivity>(
             "ORDER_ID" to order.id
         )
     }

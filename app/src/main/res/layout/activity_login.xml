@@ -7,10 +7,15 @@
         android:layout_height="match_parent"
         android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/iv_shop_logo"
-            android:layout_width="150dp"
+        <TextView
+            android:id="@+id/tv_shop_name"
+            android:layout_width="wrap_content"
             android:layout_height="150dp"
+            android:text="@string/app_name"
+            android:textSize="20pt"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +31,7 @@
             android:maxWidth="500dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_shop_logo" />
+            app:layout_constraintTop_toBottomOf="@id/tv_shop_name" />
 
         <EditText
             android:id="@+id/et_password"

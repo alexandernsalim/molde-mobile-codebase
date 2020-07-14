@@ -10,7 +10,11 @@ class HomeRepository {
     private val sharedPreferencesManager = SharedPreferencesManager()
 
     suspend fun getAllProduct(): MoldeResponse<List<Product>> {
-        return productService.getAllProduct(sharedPreferencesManager.getToken())
+        return try {
+            productService.getAllProduct(sharedPreferencesManager.getToken())
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }

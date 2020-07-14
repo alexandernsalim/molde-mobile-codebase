@@ -37,7 +37,7 @@
         <activity android:name=".presentation.change_address.ChangeAddressActivity" />
         <activity android:name=".presentation.payment_detail.PaymentDetailActivity" />
         <activity android:name=".presentation.orders.OrdersActivity" />
-        <activity android:name=".presentation.order_detail.IOrderDetailActivity" />
+        <activity android:name=".presentation.order_detail.OrderDetailActivity" />
         <activity android:name=".presentation.discussion.DiscussionDetailActivity" />
         <activity android:name=".presentation.discussion.CreateDiscussionActivity" />
         <activity android:name=".presentation.order_detail.TrackWaybillActivity" />

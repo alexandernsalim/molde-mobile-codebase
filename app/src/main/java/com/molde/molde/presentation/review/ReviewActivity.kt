@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.molde.molde.R
 import com.molde.molde.databinding.ActivityReviewBinding
 import com.molde.molde.model.request.ReviewRequest
-import com.molde.molde.presentation.order_detail.IOrderDetailActivity
+import com.molde.molde.presentation.order_detail.OrderDetailActivity
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.toast
 
@@ -23,8 +23,8 @@ class ReviewActivity : AppCompatActivity() {
         mBinding.toolbar.title = "Buat Review"
         mBinding.toolbar.setNavigationOnClickListener { finish() }
 
-        val orderItemId = intent.getIntExtra(IOrderDetailActivity.EXTRA_ORDER_ITEM_ID, 0)
-        val productId = intent.getIntExtra(IOrderDetailActivity.EXTRA_PRODUCT_ID, 0)
+        val orderItemId = intent.getIntExtra(OrderDetailActivity.EXTRA_ORDER_ITEM_ID, 0)
+        val productId = intent.getIntExtra(OrderDetailActivity.EXTRA_PRODUCT_ID, 0)
 
         mBinding.btSubmit.setOnClickListener {
             val title = mBinding.etTitle.text.toString()

@@ -24,6 +24,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
+        val shopId = resources.getInteger(R.integer.shop_id);
+
         mBinding.btLogin.setOnClickListener {
             val email = mBinding.etEmail.text.toString()
             val password = mBinding.etPassword.text.toString()
@@ -41,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
 
             if (!isError) {
                 vModel.viewModelScope.launch {
-                    if (!vModel.login(AuthRequest(email, password))) {
+                    if (!vModel.login(shopId, AuthRequest(email, password))) {
                         toast(R.string.login_failed)
                     }
                 }

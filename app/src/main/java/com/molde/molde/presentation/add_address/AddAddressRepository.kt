@@ -9,6 +9,7 @@ import com.molde.molde.model.response.RajaOngkirResponse
 import com.molde.molde.network.RetrofitClient
 import com.molde.molde.util.SharedPreferencesManager
 import okhttp3.MultipartBody
+import java.lang.Exception
 
 class AddAddressRepository {
     private val sharedPreferencesManager = SharedPreferencesManager()
@@ -38,15 +39,27 @@ class AddAddressRepository {
             .addFormDataPart("postalCode", postalCode)
             .build()
 
-        return addressService.addAddress(sharedPreferencesManager.getToken(), requestBody)
+        return try {
+            addressService.addAddress(sharedPreferencesManager.getToken(), requestBody)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun getProvinces(): RajaOngkirResponse<RajaOngkirProvince> {
-        return rajaOngkirService.getProvinces(BuildConfig.API_KEY)
+        return try {
+            rajaOngkirService.getProvinces(BuildConfig.API_KEY)
+        } catch (e: Exception) {
+            RajaOngkirResponse(null)
+        }
     }
 
     suspend fun getCities(provinceId: String): RajaOngkirResponse<RajaOngkirCity> {
-        return rajaOngkirService.getCities(BuildConfig.API_KEY, provinceId)
+        return try {
+            rajaOngkirService.getCities(BuildConfig.API_KEY, provinceId)
+        } catch (e: Exception) {
+            RajaOngkirResponse(null)
+        }
     }
 
 }

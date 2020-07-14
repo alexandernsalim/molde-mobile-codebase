@@ -12,22 +12,37 @@ class ProductDetailRepository {
     private val sharedPreferencesManager = SharedPreferencesManager()
     private val productService = RetrofitClient.productClient()
     private val cartService = RetrofitClient.cartClient()
-    private val discussionService = RetrofitClient.discussionClient()
 
     suspend fun getProduct(productId: Int): MoldeResponse<Product> {
-        return productService.getProduct(sharedPreferencesManager.getToken(), productId)
+        return try {
+            productService.getProduct(sharedPreferencesManager.getToken(), productId)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun addToCart(productId: Int, qty: Int): MoldeResponse<CartItemResponse> {
-        return cartService.addItemToCart(sharedPreferencesManager.getToken(), productId, qty)
+        return try {
+            cartService.addItemToCart(sharedPreferencesManager.getToken(), productId, qty)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun getDiscussions(productId: Int): MoldeResponse<List<Discussion>> {
-        return productService.getDiscussions(sharedPreferencesManager.getToken(), productId)
+        return try {
+            productService.getDiscussions(sharedPreferencesManager.getToken(), productId)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun getReviews(productId: Int): MoldeResponse<List<Review>> {
-        return productService.getReviews(sharedPreferencesManager.getToken(), productId)
+        return try {
+            productService.getReviews(sharedPreferencesManager.getToken(), productId)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }

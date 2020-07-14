@@ -4,6 +4,7 @@ import com.molde.molde.model.response.MoldeResponse
 import com.molde.molde.model.response.ShopUserResponse
 import com.molde.molde.network.RetrofitClient
 import okhttp3.MultipartBody
+import java.lang.Exception
 
 class RegisterRepository {
     private val service = RetrofitClient.shopUserClient()
@@ -24,7 +25,11 @@ class RegisterRepository {
             .addFormDataPart("phoneNo", phoneNo)
             .build()
 
-        return service.register(shopId, request)
+        return try {
+            service.register(shopId, request)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }
