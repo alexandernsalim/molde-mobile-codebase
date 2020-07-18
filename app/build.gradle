@@ -51,6 +51,11 @@ android {
             applicationIdSuffix "boble"
             resValue 'integer', 'shop_id', "17"
         }
+        malee {
+            dimension "shop"
+            applicationIdSuffix "malee"
+            resValue 'integer', 'shop_id', "18"
+        }
     }
 }
 
