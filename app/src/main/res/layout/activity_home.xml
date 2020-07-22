@@ -19,8 +19,9 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
+                app:titleTextColor="@color/colorAccent"
                 android:layout_height="wrap_content"
-                android:background="@color/white" />
+                android:background="@color/colorPrimary" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -53,6 +54,7 @@
                 android:layout_height="?android:attr/actionBarSize"
                 app:itemIconTint="@drawable/nav_item_color_state"
                 app:itemTextColor="@drawable/nav_item_color_state"
+                android:background="@color/colorPrimary"
                 app:menu="@menu/bottom_navigation_menu" />
 
         </LinearLayout>
