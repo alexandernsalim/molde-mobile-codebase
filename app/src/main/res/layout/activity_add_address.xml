@@ -5,7 +5,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
         android:padding="10dp">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -20,7 +19,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@color/white"
                 app:navigationIcon="@drawable/ic_arrow_back_black_24dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -32,7 +31,6 @@
             android:layout_marginTop="10dp"
             android:hint="Label Alamat"
             android:inputType="text"
-            android:textColorHint="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
@@ -44,7 +42,6 @@
             android:layout_marginTop="10dp"
             android:hint="Nama Penerima"
             android:inputType="textPersonName"
-            android:textColorHint="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_address_label" />
@@ -56,7 +53,6 @@
             android:layout_marginTop="10dp"
             android:hint="Nomor Penerima"
             android:inputType="phone"
-            android:textColorHint="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_recipient" />
@@ -68,7 +64,6 @@
             android:layout_marginTop="10dp"
             android:hint="Nama Jalan"
             android:inputType="textMultiLine"
-            android:textColorHint="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_recipient_phone" />
@@ -79,7 +74,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Provinsi"
-            android:textColor="@color/colorAccent"
             android:textSize="8pt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_street" />
@@ -99,7 +93,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Kabupaten/Kota"
-            android:textColor="@color/colorAccent"
             android:textSize="8pt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sp_province"
@@ -121,7 +114,6 @@
             android:layout_marginTop="10dp"
             android:hint="Kode Pos"
             android:inputType="textPostalAddress"
-            android:textColorHint="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sp_city" />

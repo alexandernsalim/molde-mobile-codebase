@@ -39,24 +39,25 @@ android {
     productFlavors {
         lexandera {
             dimension "shop"
-            applicationIdSuffix "lexandera"
+            applicationIdSuffix ".lexandera"
             resValue 'integer', 'shop_id', "6"
             resValue 'string', 'layout', "grid"
         }
         tanadian {
             dimension "shop"
+            applicationIdSuffix ".tanadian"
             resValue 'integer', 'shop_id', "12"
             resValue 'string', 'layout', "linear"
         }
         boble {
             dimension "shop"
-            applicationIdSuffix "boble"
+            applicationIdSuffix ".boble"
             resValue 'integer', 'shop_id', "17"
             resValue 'string', 'layout', "linear"
         }
         malee {
             dimension "shop"
-            applicationIdSuffix "malee"
+            applicationIdSuffix ".malee"
             resValue 'integer', 'shop_id', "18"
             resValue 'string', 'layout', "linear"
         }
