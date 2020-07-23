@@ -88,8 +88,8 @@ class OrderDetailActivity : BaseActivity(), OrderItemAdapter.IOrderItemCommunica
                     }
                 }
 
-                if (it.shipment.airwayBill != null) {
-                    mBinding.tvTrackOrder.visible()
+                if (it.shipment.airwayBill == null || it.shipment.airwayBill == "") {
+                    mBinding.tvTrackOrder.gone()
                 }
 
                 val adapter = OrderItemAdapter(this, it.status)
@@ -101,7 +101,11 @@ class OrderDetailActivity : BaseActivity(), OrderItemAdapter.IOrderItemCommunica
                 mBinding.tvTransactionDate.text = dateFormatter.format(date)
                 mBinding.tvStatus.text = status
                 mBinding.tvCourier.text = it.shipment.courier.toUpperCase()
-                mBinding.tvAirwayBill.text = it.shipment.airwayBill ?: "-"
+                mBinding.tvAirwayBill.text = if (it.shipment.airwayBill == null || it.shipment.airwayBill == "") {
+                        "-"
+                    } else {
+                        it.shipment.airwayBill
+                    }
                 mBinding.tvRecipient.text = it.shipment.recipient
                 mBinding.tvShipmentAddress.text = it.shipment.address
                 mBinding.tvPhoneNo.text = it.shipment.recipientPhone

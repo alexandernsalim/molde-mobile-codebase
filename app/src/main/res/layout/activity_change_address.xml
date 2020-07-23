@@ -17,8 +17,8 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
+                app:titleTextColor="@color/colorText"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 app:navigationIcon="@drawable/ic_arrow_back_black_24dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -43,7 +43,7 @@
             android:text="Tambah Alamat Baru"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="9pt"
+            android:textSize="8pt"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

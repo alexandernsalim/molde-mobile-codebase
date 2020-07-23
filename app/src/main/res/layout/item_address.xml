@@ -87,7 +87,8 @@
             android:backgroundTint="@color/orange"
             android:text="Ubah Alamat"
             android:textAllCaps="false"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="8pt" />
 
         <Button
             android:id="@+id/bt_remove_address"
@@ -99,7 +100,8 @@
             android:backgroundTint="@color/orange"
             android:text="Hapus Alamat"
             android:textAllCaps="false"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="8pt" />
 
     </LinearLayout>
 

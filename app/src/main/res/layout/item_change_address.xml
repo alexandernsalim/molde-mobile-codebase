@@ -72,6 +72,7 @@
         android:backgroundTint="@color/orange"
         android:text="Pilih Alamat"
         android:textAllCaps="false"
+        android:textSize="8pt"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_address_phone" />

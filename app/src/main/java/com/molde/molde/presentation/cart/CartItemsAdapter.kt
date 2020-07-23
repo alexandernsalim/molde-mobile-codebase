@@ -46,7 +46,6 @@ class CartItemsAdapter(
 
         fun bind(cartItem: CartItemResponse) {
             val product = cartItem.product
-            val qty = cartItem.qty
 
             with(itemView) {
                 Picasso.get().load(PathConstant.HOST + product.image).fit()

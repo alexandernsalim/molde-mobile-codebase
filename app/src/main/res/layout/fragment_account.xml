@@ -202,10 +202,11 @@
             android:id="@+id/bt_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bt_round_outline"
+            android:background="@drawable/bt_round"
             android:text="Sign Out"
             android:textAllCaps="false"
-            android:textColor="@color/orange"
+            android:textColor="@color/white"
+            android:textSize="8pt"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
