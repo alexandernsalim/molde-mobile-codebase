@@ -6,6 +6,12 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorText">@color/orange</color>
 
+    <color name="red">#DC0000</color>
+    <color name="darkRed">#CD0000</color>
+
+    <color name="blueDiamond">#59DBF8</color>
+    <color name="blueDiamondDark">#01A4C8</color>
+
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="orange">#FFFFC107</color>
