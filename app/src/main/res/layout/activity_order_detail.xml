@@ -19,7 +19,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                app:titleTextColor="@color/colorText"
                 app:navigationIcon="@drawable/ic_arrow_back_black_24dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -211,7 +211,6 @@
                     android:layout_marginTop="5dp"
                     android:text="Lacak Pengiriman"
                     android:textColor="@color/orange"
-                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_airway_bill_label" />
 
@@ -354,31 +353,40 @@
 
                 <Button
                     android:id="@+id/bt_pay_now"
-                    style="@style/RegularButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bt_round"
                     android:text="Bayar Sekarang"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
                     android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@id/tv_total_payment_price_label" />
 
                 <Button
                     android:id="@+id/bt_order_confirmed"
-                    style="@style/RegularButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bt_round"
                     android:text="Pesanan Diterima"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
                     android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@id/bt_pay_now" />
 
                 <Button
                     android:id="@+id/bt_cancel"
-                    style="@style/RegularButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bt_round"
                     android:text="Batalkan Pesanan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
                     android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@id/bt_order_confirmed" />
 

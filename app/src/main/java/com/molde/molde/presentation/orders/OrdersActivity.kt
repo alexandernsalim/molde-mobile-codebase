@@ -9,7 +9,8 @@ import com.molde.molde.BaseActivity
 import com.molde.molde.R
 import com.molde.molde.databinding.ActivityOrdersBinding
 import com.molde.molde.model.response.OrderResponse
-import com.molde.molde.presentation.order_detail.IOrderDetailActivity
+import com.molde.molde.presentation.order_detail.OrderDetailActivity
+import com.molde.molde.util.invisible
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -33,6 +34,7 @@ class OrdersActivity : BaseActivity(),
 
         vModel.ordersLiveData.observe(this, Observer {
             if (it.isNotEmpty()) {
+                mBinding.tvOrdersCond.invisible()
                 adapter.setData(it)
             }
         })
@@ -52,7 +54,7 @@ class OrdersActivity : BaseActivity(),
     }
 
     override fun getOrderDetail(order: OrderResponse) {
-        startActivity<IOrderDetailActivity>(
+        startActivity<OrderDetailActivity>(
             "ORDER_ID" to order.id
         )
     }

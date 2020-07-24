@@ -19,7 +19,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                app:titleTextColor="@color/colorText"
                 app:navigationIcon="@drawable/ic_arrow_back_black_24dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -31,7 +31,9 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:maxHeight="125dp"
-            android:textSize="7pt"
+            android:textStyle="bold"
+            android:textSize="10pt"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
             tools:text="Detail pertanyaan" />
 
@@ -57,7 +59,6 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/bt_send"
-            style="@style/RegularButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"

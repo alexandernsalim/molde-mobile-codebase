@@ -9,12 +9,14 @@
 
         <Button
             android:id="@+id/bt_add_discussion"
-            style="@style/RegularButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
+            android:background="@drawable/bt_round"
             android:text="Buat Diskusi Baru"
-            android:textSize="9pt"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="8pt"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

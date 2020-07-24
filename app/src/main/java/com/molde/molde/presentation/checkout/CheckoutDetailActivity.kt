@@ -152,7 +152,9 @@ class CheckoutDetailActivity : BaseActivity() {
         vModel.orderLiveData.observe(this, Observer {
             if (it != null) {
                 toast("Checkout berhasil dilakukan")
-                startActivity<PaymentDetailActivity>()
+                startActivity<PaymentDetailActivity>(
+                    "ORDER_ID" to it.id
+                )
                 finish()
             }
         })

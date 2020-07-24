@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
@@ -37,7 +39,27 @@ android {
     productFlavors {
         lexandera {
             dimension "shop"
+            applicationIdSuffix ".lexandera"
             resValue 'integer', 'shop_id', "6"
+            resValue 'string', 'layout', "grid"
+        }
+        tanadian {
+            dimension "shop"
+            applicationIdSuffix ".tanadian"
+            resValue 'integer', 'shop_id', "12"
+            resValue 'string', 'layout', "linear"
+        }
+        boble {
+            dimension "shop"
+            applicationIdSuffix ".boble"
+            resValue 'integer', 'shop_id', "17"
+            resValue 'string', 'layout', "linear"
+        }
+        malee {
+            dimension "shop"
+            applicationIdSuffix ".malee"
+            resValue 'integer', 'shop_id', "23"
+            resValue 'string', 'layout', "grid"
         }
     }
 }
@@ -70,6 +92,8 @@ dependencies {
     implementation 'pub.devrel:easypermissions:3.0.0'
 
     implementation 'andhradroid.dev:aFilechooser:1.0.1'
+
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

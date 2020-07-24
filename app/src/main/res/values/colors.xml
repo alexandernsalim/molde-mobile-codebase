@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorText">@color/orange</color>
+
+    <color name="red">#DC0000</color>
+    <color name="darkRed">#CD0000</color>
+
+    <color name="blueDiamond">#59DBF8</color>
+    <color name="blueDiamondDark">#01A4C8</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="orange">#FFFFC107</color>
     <color name="gray">#EDEDED</color>
+
 </resources>

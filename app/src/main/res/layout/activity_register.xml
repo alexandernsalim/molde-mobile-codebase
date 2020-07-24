@@ -18,7 +18,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                app:titleTextColor="@color/colorText"
                 app:navigationIcon="@drawable/ic_arrow_back_black_24dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -103,12 +103,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@color/orange"
+                android:background="@drawable/bt_round"
                 android:maxWidth="500dp"
                 android:text="@string/register"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="9pt"
+                android:textSize="8pt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/et_phone_no" />
@@ -120,6 +120,7 @@
                 android:layout_marginTop="10dp"
                 android:hint="@string/terms"
                 android:textAlignment="center"
+                android:textColor="@color/colorText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/bt_register" />

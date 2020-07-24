@@ -26,6 +26,8 @@
     <string name="total_item">Total (0):</string>
     <string name="total_item_price">Rp. 0</string>
     <string name="payment_welcome_text">Selamat, pesanan anda berhasil dibuat!\nSilahkan melakukan pembayaran ke salah satu rekening dibawah ini</string>
+    <string name="discussion_topic_subscribed">Discussion topic subscribed</string>
+    <string name="discussion_topic_subscribed_err">Failed subscribe to discussion topic</string>
 
     <string-array name="courier">
         <item>JNE</item>

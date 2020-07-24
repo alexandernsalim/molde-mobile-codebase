@@ -24,7 +24,11 @@ class ReviewRepository {
             .addFormDataPart("rating", review.rating)
             .build()
 
-        return reviewService.createReview(sharedPreferencesManager.getToken(), orderItemId, request)
+        return try {
+            reviewService.createReview(sharedPreferencesManager.getToken(), orderItemId, request)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }

@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.molde.molde.R
 import com.molde.molde.databinding.FragmentHomeBinding
@@ -33,7 +34,11 @@ class HomeFragment : Fragment(),
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mBinding.rvProducts.layoutManager = LinearLayoutManager(context)
+        mBinding.rvProducts.layoutManager = if (resources.getString(R.string.layout) == "linear") {
+            LinearLayoutManager(context)
+        } else {
+            GridLayoutManager(context, 2)
+        }
         mBinding.rvProducts.adapter = adapter
 
         vModel.viewModelScope.launch {

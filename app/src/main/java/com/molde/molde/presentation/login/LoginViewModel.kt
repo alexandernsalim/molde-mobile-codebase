@@ -10,8 +10,8 @@ class LoginViewModel : ViewModel() {
     val loginLiveData = MutableLiveData<AuthResponse>()
     private val repository = LoginRepository()
 
-    suspend fun login(request: AuthRequest): Boolean {
-        val response = repository.login(request)
+    suspend fun login(shopId: Int, request: AuthRequest): Boolean {
+        val response = repository.login(shopId, request)
 
         return if (response.code == ResponseCode.SUCCESS) {
             loginLiveData.postValue(response.data)

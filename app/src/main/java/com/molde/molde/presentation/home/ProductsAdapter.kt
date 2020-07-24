@@ -23,7 +23,11 @@ class ProductsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ProductViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
+        if (parent.context.resources.getString(R.string.layout) == "linear") {
+            LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
+        } else {
+            LayoutInflater.from(parent.context).inflate(R.layout.item_product_grid, parent, false)
+        }
     )
 
     override fun getItemCount() = products.size

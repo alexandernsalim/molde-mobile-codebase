@@ -15,22 +15,38 @@ class OrderDetailRepository {
     private val rajaOngkirService = RetrofitClient.rajaOngkirClient()
 
     suspend fun getOrder(orderId: Int): MoldeResponse<OrderResponse> {
-        return orderService.getOrderDetail(sharedPreferencesManager.getToken(), orderId)
+        return try {
+            orderService.getOrderDetail(sharedPreferencesManager.getToken(), orderId)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun trackWaybill(
         waybill: String,
         courier: String
     ): RajaOngkirResponse<RajaOngkirWaybill> {
-        return rajaOngkirService.trackWaybill(BuildConfig.API_KEY, waybill, courier)
+        return try {
+            rajaOngkirService.trackWaybill(BuildConfig.API_KEY, waybill, courier)
+        } catch (e: Exception) {
+            RajaOngkirResponse(null)
+        }
     }
 
     suspend fun completeOrder(orderId: Int): MoldeResponse<Order> {
-        return orderService.completeOrder(sharedPreferencesManager.getToken(), orderId)
+        return try {
+            orderService.completeOrder(sharedPreferencesManager.getToken(), orderId)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
     suspend fun cancelOrder(orderId: Int): MoldeResponse<Order> {
-        return orderService.cancelOrder(sharedPreferencesManager.getToken(), orderId)
+        return try {
+            orderService.cancelOrder(sharedPreferencesManager.getToken(), orderId)
+        } catch (e: Exception) {
+            MoldeResponse(500, "Internal Server Error", null)
+        }
     }
 
 }

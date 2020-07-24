@@ -10,6 +10,7 @@ import com.molde.molde.R
 import com.molde.molde.databinding.ActivityAddressesBinding
 import com.molde.molde.model.entity.Address
 import com.molde.molde.presentation.add_address.AddAddressActivity
+import com.molde.molde.util.invisible
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -39,6 +40,7 @@ class AddressesActivity : BaseActivity(),
 
         vModel.addressesLiveData.observe(this, Observer {
             if (it.isNotEmpty()) {
+                mBinding.tvAddressesCond.invisible()
                 adapter.setData(it)
             }
         })

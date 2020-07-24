@@ -196,53 +196,17 @@
                 android:layout_height="4dp"
                 android:background="@drawable/shadow" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_complaints"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/tv_complaints"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Komplain"
-                    android:textColor="@color/black"
-                    android:textSize="8pt"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/bt_complaints"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_chevron_right_black_24dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:background="@drawable/shadow" />
-
         </LinearLayout>
 
         <Button
             android:id="@+id/bt_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bt_round_outline"
+            android:background="@drawable/bt_round"
             android:text="Sign Out"
             android:textAllCaps="false"
-            android:textColor="@color/orange"
+            android:textColor="@color/white"
+            android:textSize="8pt"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
