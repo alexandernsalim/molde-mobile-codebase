@@ -58,8 +58,8 @@ android {
         malee {
             dimension "shop"
             applicationIdSuffix ".malee"
-            resValue 'integer', 'shop_id', "18"
-            resValue 'string', 'layout', "linear"
+            resValue 'integer', 'shop_id', "23"
+            resValue 'string', 'layout', "grid"
         }
     }
 }
